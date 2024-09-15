@@ -1,6 +1,6 @@
 s = int(input('Enter first year : '))
 e = int(input('Enter last year : '))
-for i in range(s, e):
+for i in range(s, e + 1):
     for a in range(1,13):
         if a <= 6:
             x = 32
