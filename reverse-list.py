@@ -7,3 +7,4 @@ for i in range(n):
     list2.append(list1[-1-i])
 
 print(list2)
+# or use reverse()
