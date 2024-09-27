@@ -3,13 +3,14 @@ list2 = [2,5,9,8,18,9]
 list3 = []
 
 for index in list1:
+    if not(index in list3):
+    
+        for index2 in list2:
 
-    for index2 in list2:
+            if index == index2:
 
-        if index == index2 and not(index in list3):
+                list3.append(index)
 
-            list3.append(index)
-
-            break
+                break
 
 print(list3)
