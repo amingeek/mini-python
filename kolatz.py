@@ -1,7 +1,7 @@
 a = int(input(' Enter a number : '))
 mylist = [a]
 
-for i in range(a+1):
+while True:
     if a == 1:
         break
 
