@@ -1,31 +1,14 @@
-import numpy as np
-
 def sum_array(a1):
-    merge = ''
-    if a1.shape == ():
-        return a1
-    elif len(a1.shape) == 1:
-        for i in a1:
-            merge += str(i)
-    elif len(a1.shape) == 2:
-        for i in a1:
-            for j in i:
-                merge += str(j)  
-    elif len(a1.shape) == 3:
-        for i in a1:
-            for j in i:
-                for k in j:
-                    merge += str(k)
-    return merge
+    def rsum(array):
+        if isinstance(array, list):
+            total = 0
+            for item in array:
+                total += rsum(item)
+            return total
+        else:
+            return array
+    return rsum(a1)
 
-a1 = np.array([[1, 2, 3, 'a', 'b', 'c'], [4, 5, 6, 7, '8', '9'],[10, 11, 12, 13, 14, 15]])
-a2 = np.array([[1, 2, 3, 'a', 'b', 'c'], [4, 5, 6, 7, '8', '9'],[10, 11, 12, 13, 14, 15]])
-a3 = np.array([[1, 2, 3, 'a', 'b', 'c'], [4, 5, 6, 7, '8', '9'],[10, 11, 12, 13, 14, 15]])
-a4 = np.array([[1, 2, 3, 'a', 'b', 'c'], [4, 5, 6, 7, '8', '9'],[10, 11, 12, 13, 14, 15]])
-a5 = np.array([[1, 2, 3, 'a', 'b', 'c'], [4, 5, 6, 7, '8', '9'],[10, 11, 12, 13, 14, 15]])
+a5 = [[1, 2, 3], [4, 5, 6, 7], [10, 11, 12, 13, 14, 15]]
 
-print(sum_array(a1))
-print(sum_array(a2))
-print(sum_array(a3))
-print(sum_array(a4))
-print(sum_array(a5))
+print(sum_array(a5))  
