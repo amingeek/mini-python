@@ -1,4 +1,4 @@
-import numpy as np
+# import numpy as np
 import random as rnd
 
 tass = [1, 2 ,3 ,4 ,5 ,6]
@@ -13,7 +13,6 @@ for _ in range(5):
     for _ in range(100000):
         list1.append(rnd.choice(tass) * rnd.choice(seke))
 
-
-avg = np.mean(list1)
+avg = sum(list1) / len(list1)
 
 print(avg)
