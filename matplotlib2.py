@@ -2,20 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-x = np.random.rand(100)
-y = np.random.rand(100)
-color = np.random.rand(100)
+def f(x):
+    return -x**4 + 5*x**2 + 3*x + 10
 
+x = np.linspace(-100, 100, 1000)
+y = f(x)
 
-x1 = np.random.rand(100)
-y1 = np.random.rand(100)
+plt.plot(x, y)
+plt.axhline(0, color='black', lw=0.5)
+plt.axvline(0, color='black', lw=0.5)
+plt.grid(True)
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('f(x) = -x^4 + 5x^2 + 3x + 10')
 
-plt.scatter(x, y, color='blue', alpha=1)
-plt.scatter(x1, y1, color='red', alpha=1)
-
-plt.colorbar(label='Color Intensity')
-plt.xlabel('')
-plt.ylabel('')
-plt.title('')
-plt.legend()
 plt.show()
