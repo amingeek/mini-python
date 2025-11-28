@@ -1,9 +1,9 @@
 import numpy as np
 
 temps = np.array([
-    [14, 16, 15, 18, 20, 21, 19],  # Tehran
-    [20, 22, 23, 25, 27, 28, 26],  # Shiraz
-    [10, 12, 13, 14, 15, 16, 15]   # Mashhad
+    [14, 16, 15, 18, 20, 21, 19],  # Tehran i = 0
+    [20, 22, 23, 25, 27, 28, 26],  # Shiraz i = 1
+    [10, 12, 13, 14, 15, 16, 15]   # Mashhad i = 2
 ])
 
 def show_data(data):
@@ -13,9 +13,9 @@ def show_data(data):
 
 
 def process_data(data):
-    mean = np.mean(temps, axis=1)
+    mean = np.mean(data, axis=1)
 
-    mean_per_day = np.mean(temps, axis=0)
+    mean_per_day = np.mean(data, axis=0)
 
     most_hot_city = np.argmax(mean)
     most_cold_city = np.argmin(mean)
@@ -28,6 +28,7 @@ def process_data(data):
     }
 
     return res
+
 def main():
     data = process_data(temps)
     show_data(data)

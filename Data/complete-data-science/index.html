@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش جامع Python، NumPy و Pandas</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  --font-family-base: "Tahoma", "Vazir", "Segoe UI", sans-serif;
+  --font-family-mono: "Courier New", "Consolas", monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.8;
+    padding: var(--space-24);
+}
+
+.app-container {
+    display: flex;
+    gap: var(--space-24);
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-20);
+    height: fit-content;
+    position: sticky;
+    top: var(--space-24);
+}
+
+.sidebar-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--space-20);
+    padding-bottom: var(--space-12);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.nav-item {
+    padding: var(--space-10) var(--space-12);
+    margin-bottom: var(--space-8);
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-standard);
+    font-size: var(--font-size-md);
+    color: var(--color-text);
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.nav-item:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-border);
+}
+
+.nav-item.active {
+    background-color: var(--color-primary);
+    color: var(--color-btn-primary-text);
+    border-color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.container {
+    max-width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: var(--space-32);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-24);
+}
+
+h1 {
+    color: var(--color-text);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-12);
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+.topic-header {
+    margin-bottom: var(--space-24);
+}
+
+.topic-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-text);
+    margin-bottom: var(--space-8);
+}
+
+.topic-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+}
+
+.tabs {
+    display: flex;
+    gap: var(--space-8);
+    margin-bottom: var(--space-16);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.tab {
+    padding: var(--space-12) var(--space-24);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    transition: all var(--duration-fast) var(--ease-standard);
+    font-family: var(--font-family-base);
+    margin-bottom: -2px;
+}
+
+.tab:hover {
+    color: var(--color-text);
+    background-color: var(--color-secondary);
+}
+
+.tab.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.line-item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-base);
+    padding: var(--space-16);
+    margin-bottom: var(--space-16);
+}
+
+.line-header {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-8);
+}
+
+.line-code {
+    background-color: var(--color-bg-1);
+    border-right: 4px solid var(--color-primary);
+    padding: var(--space-12);
+    margin: var(--space-8) 0;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-base);
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+    color: var(--color-text);
+}
+
+.line-explanation {
+    color: var(--color-text);
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+}
+
+.code-container {
+    position: relative;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-base);
+    overflow: hidden;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-12) var(--space-16);
+    background-color: var(--color-bg-2);
+    border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+.code-title {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.copy-btn {
+    padding: var(--space-6) var(--space-12);
+    background-color: var(--color-primary);
+    color: var(--color-btn-primary-text);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    font-family: var(--font-family-base);
+    transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.copy-btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.copy-btn:active {
+    background-color: var(--color-primary-active);
+}
+
+.code-block {
+    padding: var(--space-16);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--color-text);
+    background-color: var(--color-bg-1);
+}
+
+.output-container {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-base);
+    padding: var(--space-16);
+}
+
+.output-title {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-16);
+}
+
+.output-block {
+    background-color: var(--color-bg-3);
+    border-right: 4px solid var(--color-success);
+    padding: var(--space-16);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--color-text);
+}
+
+.copied-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-success);
+    color: var(--color-btn-primary-text);
+    padding: var(--space-16) var(--space-32);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    display: none;
+}
+
+.copied-message.show {
+    display: block;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-32);
+    gap: var(--space-16);
+}
+
+.nav-btn {
+    padding: var(--space-12) var(--space-24);
+    background-color: var(--color-primary);
+    color: var(--color-btn-primary-text);
+    border: none;
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    font-family: var(--font-family-base);
+    transition: all var(--duration-fast) var(--ease-standard);
+    flex: 1;
+}
+
+.nav-btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.nav-btn:active {
+    background-color: var(--color-primary-active);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.info-content {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-base);
+    padding: var(--space-20);
+    white-space: pre-line;
+    line-height: 1.8;
+    font-size: var(--font-size-md);
+}
+
+.conclusion-container {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-base);
+    padding: var(--space-24);
+}
+
+.conclusion-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-20);
+    font-weight: var(--font-weight-bold);
+}
+
+.conclusion-points {
+    list-style: none;
+}
+
+.conclusion-points li {
+    padding: var(--space-12);
+    margin-bottom: var(--space-12);
+    background-color: var(--color-bg-1);
+    border-right: 4px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-md);
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: static;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2 class="sidebar-title">📚 فهرست مطالب</h2>
+            <nav id="sidebar-nav"></nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="container">
+                <header>
+                    <h1>🎓 آموزش جامع Python، NumPy و Pandas</h1>
+                    <p class="subtitle">یادگیری تحلیل داده از صفر تا صد</p>
+                </header>
+
+                <div class="topic-header">
+                    <h2 class="topic-title" id="topic-title"></h2>
+                    <p class="topic-subtitle" id="topic-subtitle"></p>
+                </div>
+
+                <div id="search-bar" style="margin-bottom: 32px;">
+  <input id="search-input" type="text" class="form-control" placeholder="جستجو در دوره..." style="width:100%;font-size:16px;">
+</div>
+
+<div class="tabs">
+    <button class="tab active" data-tab="line-by-line">توضیح خط به خط</button>
+    <button class="tab" data-tab="full-code">کد کامل</button>
+    <button class="tab" data-tab="output">خروجی</button>
+</div>
+
+<div id="line-by-line" class="tab-content active"></div>
+<div id="full-code" class="tab-content"></div>
+<div id="output" class="tab-content"></div>
+
+<div class="nav-buttons">
+    <button class="nav-btn" id="prev-btn" onclick="navigatePrev()">← قبلی</button>
+    <button class="nav-btn" id="next-btn" onclick="navigateNext()">بعدی →</button>
+</div>
+            </div>
+        </main>
+    </div>
+
+    <div class="copied-message" id="copied-message">کد کپی شد! ✓</div>
+
+    <script>
+        const topics = {
+            "intro": {
+                "id": "intro",
+                "title": "مقدمه و آمادگی",
+                "subtitle": "خوش آمدید به دنیای تحلیل داده!",
+                "type": "info",
+                "content": `🎯 هدف این دوره:
+• یادگیری Python از ابتدا
+• NumPy برای محاسبات سریع
+• Pandas برای تحلیل داده‌ها
+• پروژه‌های عملی واقعی
+
+📚 نیازمندی‌ها:
+• کامپیوتر و اینترنت
+• Python 3.8+
+• ویرایشگر کد (VS Code یا PyCharm)
+• تمایل برای یادگیری`
+            },
+            "python-variables": {
+                "id": "python-variables",
+                "title": "مبانی Python - متغیرها",
+                "subtitle": "اولین قدم: متغیرها و انواع داده",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "name = \"علی\"", "explanation": "متغیر name را ایجاد کرده و مقدار \"علی\" (متن) را ذخیره می‌کنیم"},
+                    {"lineNum": 2, "code": "age = 25", "explanation": "متغیر age را ایجاد کرده و عدد 25 (صحیح) را ذخیره می‌کنیم"},
+                    {"lineNum": 3, "code": "height = 1.75", "explanation": "متغیر height را ایجاد کرده و عدد 1.75 (اعشاری) را ذخیره می‌کنیم"},
+                    {"lineNum": 4, "code": "is_student = True", "explanation": "متغیر منطقی is_student را ایجاد کرده و مقدار True (درست) را ذخیره می‌کنیم"},
+                    {"lineNum": 5, "code": "print(name)", "explanation": "مقدار متغیر name را چاپ می‌کنیم (نتیجه: علی)"},
+                    {"lineNum": 6, "code": "print(age)", "explanation": "مقدار متغیر age را چاپ می‌کنیم (نتیجه: 25)"},
+                    {"lineNum": 7, "code": "print(type(name))", "explanation": "نوع داده متغیر name را می‌بینیم (نتیجه: str یعنی String/متن)"},
+                    {"lineNum": 8, "code": "print(type(age))", "explanation": "نوع داده متغیر age را می‌بینیم (نتیجه: int یعنی Integer/عدد صحیح)"}
+                ],
+                "fullCode": `# تعریف متغیرها
+name = "علی"
+age = 25
+height = 1.75
+is_student = True
+
+# چاپ متغیرها
+print(name)
+print(age)
+print(height)
+print(is_student)
+
+# چاپ نوع داده‌ها
+print(type(name))
+print(type(age))
+print(type(height))
+print(type(is_student))`,
+                "output": `علی
+25
+1.75
+True
+<class 'str'>
+<class 'int'>
+<class 'float'>
+<class 'bool'>`
+            },
+            "python-lists": {
+                "id": "python-lists",
+                "title": "مبانی Python - لیست‌ها و حلقه‌ها",
+                "subtitle": "کار با مجموعه‌های داده",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "numbers = [1, 2, 3, 4, 5]", "explanation": "لیستی ایجاد می‌کنیم که شامل 5 عدد است (به ترتیب: 1، 2، 3، 4، 5)"},
+                    {"lineNum": 2, "code": "print(numbers)", "explanation": "تمام لیست را چاپ می‌کنیم"},
+                    {"lineNum": 3, "code": "print(numbers[0])", "explanation": "عنصر اول لیست را چاپ می‌کنیم (شاخص 0 یعنی اولی، نه 1!)"},
+                    {"lineNum": 4, "code": "print(numbers[-1])", "explanation": "عنصر آخر لیست را چاپ می‌کنیم (شاخص -1 برای آخری)"},
+                    {"lineNum": 5, "code": "numbers.append(6)", "explanation": "عدد 6 را به انتهای لیست اضافه می‌کنیم"},
+                    {"lineNum": 6, "code": "print(numbers)", "explanation": "لیست تغییر‌یافته را چاپ می‌کنیم (حالا 6 عنصر دارد)"},
+                    {"lineNum": 7, "code": "for number in numbers:", "explanation": "حلقه for شروع می‌کنیم که برای هر عنصر لیست تکرار می‌شود"},
+                    {"lineNum": 8, "code": "    print(f\"عدد: {number}\")", "explanation": "هر عدد را با f-string چاپ می‌کنیم"}
+                ],
+                "fullCode": `# ایجاد لیست
+numbers = [1, 2, 3, 4, 5]
+print(numbers)
+
+# دسترسی به عناصر
+print("عنصر اول:", numbers[0])
+print("عنصر آخر:", numbers[-1])
+
+# اضافه کردن عنصر
+numbers.append(6)
+print("بعد از اضافه کردن:", numbers)
+
+# حلقه روی لیست
+print("\nچاپ تک‌تک:")
+for number in numbers:
+    print(f"عدد: {number}")`,
+                "output": `[1, 2, 3, 4, 5]
+عنصر اول: 1
+عنصر آخر: 5
+بعد از اضافه کردن: [1, 2, 3, 4, 5, 6]
+
+چاپ تک‌تک:
+عدد: 1
+عدد: 2
+عدد: 3
+عدد: 4
+عدد: 5
+عدد: 6`
+            },
+            "python-functions": {
+                "id": "python-functions",
+                "title": "مبانی Python - توابع",
+                "subtitle": "کد را قابل استفاده مجدد کنید",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "def add_numbers(a, b):", "explanation": "تابعی به نام add_numbers تعریف می‌کنیم که دو پارامتر a و b دریافت می‌کند"},
+                    {"lineNum": 2, "code": "    result = a + b", "explanation": "داخل تابع، دو پارامتر را جمع می‌کنیم"},
+                    {"lineNum": 3, "code": "    return result", "explanation": "نتیجه جمع را بازگشت می‌دهیم"},
+                    {"lineNum": 4, "code": "sum1 = add_numbers(10, 20)", "explanation": "تابع add_numbers را با اعداد 10 و 20 فراخوانی کنیم"},
+                    {"lineNum": 5, "code": "print(f\"جمع: {sum1}\")", "explanation": "نتیجه را چاپ می‌کنیم (باید 30 باشد)"},
+                    {"lineNum": 6, "code": "def calculate_average(numbers):", "explanation": "تابع دیگری تعریف می‌کنیم برای محاسبه میانگین"},
+                    {"lineNum": 7, "code": "    total = sum(numbers)", "explanation": "مجموع تمام عناصر لیست را محاسبه می‌کنیم"},
+                    {"lineNum": 8, "code": "    count = len(numbers)", "explanation": "تعداد عناصر لیست را می‌شماریم"},
+                    {"lineNum": 9, "code": "    return total / count", "explanation": "میانگین را محاسبه کرده و بازگشت می‌دهیم"}
+                ],
+                "fullCode": `# تابع برای جمع دو عدد
+def add_numbers(a, b):
+    result = a + b
+    return result
+
+sum1 = add_numbers(10, 20)
+print(f"جمع 10 و 20: {sum1}")
+
+# تابع برای محاسبه میانگین
+def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    average = total / count
+    return average
+
+scores = [85, 90, 78, 92]
+avg = calculate_average(scores)
+print(f"میانگین نمرات: {avg}")
+
+# استفاده دوباره از تابع
+prices = [100, 150, 200, 50]
+avg_price = calculate_average(prices)
+print(f"میانگین قیمت: {avg_price}")`,
+                "output": `جمع 10 و 20: 30
+میانگین نمرات: 86.25
+میانگین قیمت: 125.0`
+            },
+            "numpy-intro": {
+                "id": "numpy-intro",
+                "title": "NumPy - شروع کار",
+                "subtitle": "محاسبات سریع و قدرتمند",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "import numpy as np", "explanation": "کتابخانه NumPy را import می‌کنیم و با نام مختصر np استفاده می‌کنیم"},
+                    {"lineNum": 2, "code": "arr = np.array([1, 2, 3, 4, 5])", "explanation": "یک NumPy آرایه ایجاد می‌کنیم (سریع‌تر از لیست!)"},
+                    {"lineNum": 3, "code": "print(arr)", "explanation": "آرایه را چاپ می‌کنیم"},
+                    {"lineNum": 4, "code": "print(arr * 2)", "explanation": "تمام عناصر آرایه را در 2 ضرب می‌کنیم (خیلی سریع!)"},
+                    {"lineNum": 5, "code": "print(arr + 10)", "explanation": "به تمام عناصر 10 اضافه می‌کنیم"},
+                    {"lineNum": 6, "code": "print(np.sum(arr))", "explanation": "مجموع تمام عناصر را محاسبه می‌کنیم (1+2+3+4+5 = 15)"},
+                    {"lineNum": 7, "code": "print(np.mean(arr))", "explanation": "میانگین عناصر را محاسبه می‌کنیم (15/5 = 3)"}
+                ],
+                "fullCode": `import numpy as np
+
+# آرایه یک‌بعدی
+arr = np.array([1, 2, 3, 4, 5])
+print("آرایه اصلی:")
+print(arr)
+
+# عملیات ریاضی
+print("\nضرب در 2:")
+print(arr * 2)
+
+print("\nجمع 10:")
+print(arr + 10)
+
+# توابع تجمیع‌کننده
+print("\nمجموع:", np.sum(arr))
+print("میانگین:", np.mean(arr))
+print("بیشترین:", np.max(arr))
+print("کمترین:", np.min(arr))`,
+                "output": `آرایه اصلی:
+[1 2 3 4 5]
+
+ضرب در 2:
+[ 2  4  6  8 10]
+
+جمع 10:
+[11 12 13 14 15]
+
+مجموع: 15
+میانگین: 3.0
+بیشترین: 5
+کمترین: 1`
+            },
+            "numpy-arrays": {
+                "id": "numpy-arrays",
+                "title": "NumPy - آرایه‌ها",
+                "subtitle": "ایجاد و دستکاری آرایه‌ها",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "import numpy as np", "explanation": "NumPy را import می‌کنیم"},
+                    {"lineNum": 2, "code": "arr1 = np.array([1, 2, 3, 4, 5])", "explanation": "آرایه از یک لیست ایجاد می‌کنیم"},
+                    {"lineNum": 3, "code": "arr2 = np.zeros(5)", "explanation": "آرایه‌ای با 5 صفر ایجاد می‌کنیم"},
+                    {"lineNum": 4, "code": "arr3 = np.ones(5)", "explanation": "آرایه‌ای با 5 عدد یک ایجاد می‌کنیم"},
+                    {"lineNum": 5, "code": "arr4 = np.arange(0, 10, 2)", "explanation": "آرایه‌ای از 0 تا 10 با گام 2 ایجاد می‌کنیم (0, 2, 4, 6, 8)"},
+                    {"lineNum": 6, "code": "matrix = np.array([[1, 2, 3], [4, 5, 6]])", "explanation": "آرایه 2 بعدی (ماتریس) ایجاد می‌کنیم"},
+                    {"lineNum": 7, "code": "print(matrix.shape)", "explanation": "شکل ماتریس را می‌بینیم (2 ردیف، 3 ستون)"}
+                ],
+                "fullCode": `import numpy as np
+
+# روش‌های ایجاد آرایه
+print("1. از لیست:")
+arr1 = np.array([1, 2, 3, 4, 5])
+print(arr1)
+
+print("\n2. صفرها:")
+arr2 = np.zeros(5)
+print(arr2)
+
+print("\n3. یکی‌ها:")
+arr3 = np.ones(5)
+print(arr3)
+
+print("\n4. محدوده:")
+arr4 = np.arange(0, 10, 2)
+print(arr4)
+
+print("\n5. ماتریس:")
+matrix = np.array([[1, 2, 3], [4, 5, 6]])
+print(matrix)
+print("شکل:", matrix.shape)
+
+print("\n6. ایندکسینگ:")
+print("عنصر [0,1]:", matrix[0, 1])
+
+print("\n7. برش:")
+print("ردیف اول:", matrix[0])`,
+                "output": `1. از لیست:
+[1 2 3 4 5]
+
+2. صفرها:
+[0. 0. 0. 0. 0.]
+
+3. یکی‌ها:
+[1. 1. 1. 1. 1.]
+
+4. محدوده:
+[0 2 4 6 8]
+
+5. ماتریس:
+[[1 2 3]
+ [4 5 6]]
+شکل: (2, 3)
+
+6. ایندکسینگ:
+عنصر [0,1]: 2
+
+7. برش:
+ردیف اول: [1 2 3]`
+            },
+            "pandas-intro": {
+                "id": "pandas-intro",
+                "title": "Pandas - شروع کار",
+                "subtitle": "جدول‌ها و تحلیل داده‌ها",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "import pandas as pd", "explanation": "کتابخانه Pandas را import می‌کنیم"},
+                    {"lineNum": 2, "code": "data = {'نام': ['علی', 'فاطمه', 'محمد'], 'نمره': [85, 90, 78]}", "explanation": "دیکشنری (فرهنگ) ایجاد می‌کنیم با ستون‌های نام و نمره"},
+                    {"lineNum": 3, "code": "df = pd.DataFrame(data)", "explanation": "DataFrame (جدول) ایجاد می‌کنیم از دیکشنری"},
+                    {"lineNum": 4, "code": "print(df)", "explanation": "جدول را چاپ می‌کنیم"},
+                    {"lineNum": 5, "code": "print(df['نام'])", "explanation": "فقط ستون نام را نمایش می‌دهیم"},
+                    {"lineNum": 6, "code": "print(df['نمره'].mean())", "explanation": "میانگین نمرات را محاسبه می‌کنیم"}
+                ],
+                "fullCode": `import pandas as pd
+
+# ایجاد داده
+data = {
+    'نام': ['علی', 'فاطمه', 'محمد', 'زهرا'],
+    'نمره': [85, 90, 78, 92]
+}
+
+# ایجاد DataFrame
+df = pd.DataFrame(data)
+print("جدول اصلی:")
+print(df)
+
+# دسترسی به ستون
+print("\nنام‌ها:")
+print(df['نام'])
+
+# آمار
+print(f"\nمیانگین نمرات: {df['نمره'].mean()}")
+print(f"بیشترین نمره: {df['نمره'].max()}")
+
+# شکل
+print(f"\nتعداد ردیف: {len(df)}")
+print(f"تعداد ستون: {len(df.columns)}")`,
+                "output": `جدول اصلی:
+  نام  نمره
+0  علی   85
+1 فاطمه   90
+2 محمد   78
+3 زهرا   92
+
+نام‌ها:
+0     علی
+1    فاطمه
+2    محمد
+3    زهرا
+Name: نام, dtype: object
+
+میانگین نمرات: 86.25
+بیشترین نمره: 92
+
+تعداد ردیف: 4
+تعداد ستون: 2`
+            },
+            "pandas-filtering": {
+                "id": "pandas-filtering",
+                "title": "Pandas - فیلتر‌کردن و تحلیل",
+                "subtitle": "استخراج داده‌های خاص",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "import pandas as pd", "explanation": "Pandas را import می‌کنیم"},
+                    {"lineNum": 2, "code": "df = pd.DataFrame({'نام': ['علی', 'فاطمه', 'محمد', 'زهرا'], 'نمره': [85, 90, 78, 92]})", "explanation": "جدول را ایجاد می‌کنیم"},
+                    {"lineNum": 3, "code": "high_scores = df[df['نمره'] > 85]", "explanation": "فقط ردیف‌هایی را انتخاب می‌کنیم که نمره بیشتر از 85 است"},
+                    {"lineNum": 4, "code": "print(high_scores)", "explanation": "داده‌های فیلتر شده را چاپ می‌کنیم"},
+                    {"lineNum": 5, "code": "df['درجه'] = df['نمره'].apply(lambda x: 'خوب' if x > 85 else 'متوسط')", "explanation": "ستون جدید درجه اضافه می‌کنیم بر اساس نمره"},
+                    {"lineNum": 6, "code": "print(df)", "explanation": "جدول نهایی را چاپ می‌کنیم"}
+                ],
+                "fullCode": `import pandas as pd
+
+# ایجاد DataFrame
+df = pd.DataFrame({
+    'نام': ['علی', 'فاطمه', 'محمد', 'زهرا'],
+    'نمره': [85, 90, 78, 92]
+})
+
+print("جدول اصلی:")
+print(df)
+
+# فیلتر‌کردن
+print("\nفیلتر - نمره > 85:")
+high_scores = df[df['نمره'] > 85]
+print(high_scores)
+
+# فیلتر چندگانه
+print("\nفیلتر - نمره بین 80 و 90:")
+medium = df[(df['نمره'] >= 80) & (df['نمره'] <= 90)]
+print(medium)
+
+# اضافه کردن ستون
+df['درجه'] = df['نمره'].apply(lambda x: 'ممتاز' if x >= 90 else 'خوب' if x >= 85 else 'متوسط')
+
+print("\nجدول با درجات:")
+print(df)`,
+                "output": `جدول اصلی:
+  نام  نمره
+0  علی   85
+1 فاطمه   90
+2 محمد   78
+3 زهرا   92
+
+فیلتر - نمره > 85:
+  نام  نمره
+1 فاطمه   90
+3 زهرا   92
+
+فیلتر - نمره بین 80 و 90:
+  نام  نمره
+0  علی   85
+1 فاطمه   90
+
+جدول با درجات:
+  نام  نمره   درجه
+0  علی   85   خوب
+1 فاطمه   90  ممتاز
+2 محمد   78  متوسط
+3 زهرا   92  ممتاز`
+            },
+            "pandas-groupby": {
+                "id": "pandas-groupby",
+                "title": "Pandas - GroupBy و تجمیع",
+                "subtitle": "گروه‌بندی داده‌ها",
+                "lineByLine": [
+                    {"lineNum": 1, "code": "import pandas as pd", "explanation": "Pandas را import می‌کنیم"},
+                    {"lineNum": 2, "code": "df = pd.DataFrame({'شهر': ['تهران', 'تهران', 'اصفهان', 'اصفهان'], 'فروش': [1000, 1500, 800, 900]})", "explanation": "جدول با فروش از شهرهای مختلف ایجاد می‌کنیم"},
+                    {"lineNum": 3, "code": "grouped = df.groupby('شهر')['فروش'].sum()", "explanation": "داده‌ها را بر اساس شهر گروه‌بندی کرده و فروش را جمع می‌کنیم"},
+                    {"lineNum": 4, "code": "print(grouped)", "explanation": "مجموع فروش هر شهر را چاپ می‌کنیم"},
+                    {"lineNum": 5, "code": "avg = df.groupby('شهر')['فروش'].mean()", "explanation": "میانگین فروش هر شهر را محاسبه می‌کنیم"},
+                    {"lineNum": 6, "code": "print(avg)", "explanation": "میانگین‌ها را چاپ می‌کنیم"}
+                ],
+                "fullCode": `import pandas as pd
+
+# ایجاد داده
+df = pd.DataFrame({
+    'شهر': ['تهران', 'تهران', 'اصفهان', 'اصفهان', 'شیراز', 'شیراز'],
+    'فروش': [1000, 1500, 800, 900, 1100, 1300]
+})
+
+print("داده اصلی:")
+print(df)
+
+# GroupBy - جمع
+print("\nمجموع فروش هر شهر:")
+total = df.groupby('شهر')['فروش'].sum()
+print(total)
+
+# GroupBy - میانگین
+print("\nمیانگین فروش هر شهر:")
+avg = df.groupby('شهر')['فروش'].mean()
+print(avg)
+
+# GroupBy - شمارش
+print("\nتعداد فروش‌ها در هر شهر:")
+count = df.groupby('شهر')['فروش'].count()
+print(count)
+
+# چند عملیات
+print("\nخلاصه کامل:")
+summary = df.groupby('شهر').agg({'فروش': ['sum', 'mean', 'count']})
+print(summary)`,
+                "output": `داده اصلی:
+  شهر  فروش
+0 تهران  1000
+1 تهران  1500
+2 اصفهان  800
+3 اصفهان  900
+4 شیراز  1100
+5 شیراز  1300
+
+مجموع فروش هر شهر:
+شهر
+اصفهان    1700
+تهران     2500
+شیراز     2400
+Name: فروش, dtype: int64
+
+میانگین فروش هر شهر:
+شهر
+اصفهان    850.0
+تهران    1250.0
+شیراز    1200.0
+Name: فروش, dtype: float64
+
+تعداد فروش‌ها در هر شهر:
+شهر
+اصفهان    2
+تهران     2
+شیراز     2
+Name: فروش, dtype: int64`
+            },
+            "conclusion": {
+                "id": "conclusion",
+                "title": "خلاصه و نکات مهم",
+                "subtitle": "جمع‌بندی دوره",
+                "type": "conclusion",
+                "points": [
+                    "NumPy سریع‌تر است - از آن برای داده‌های بزرگ استفاده کنید",
+                    "Pandas برای جدول‌ها - بهترین ابزار برای تحلیل داده",
+                    "پاکسازی ضروری - 80% زمان برای تمیز کردن داده صرف می‌شود",
+                    "ابتدا بررسی کنید - head() و describe() را استفاده کنید",
+                    "نتایج معنی‌دار - همبستگی و میانگین را اندازه‌گیری کنید"
+                ]
+            }
+        };
+
+        const topicOrder = [
+            "intro",
+            "python-variables",
+            "python-lists",
+            "python-functions",
+            "numpy-intro",
+            "numpy-arrays",
+            "pandas-intro",
+            "pandas-filtering",
+            "pandas-groupby",
+            "conclusion"
+        ];
+
+        let currentTopicIndex = 0;
+
+        const examples = {
+            "1": {
+                "title": "مثال 1: متغیرها و انواع داده",
+                "lineByLine": [
+                    {
+                        "lineNum": 1,
+                        "code": "name = \"علی\"",
+                        "explanation": "یک متغیر به نام name ایجاد می‌کنیم و مقدار \"علی\" (متن) را در آن ذخیره می‌کنیم"
+                    },
+                    {
+                        "lineNum": 2,
+                        "code": "age = 25",
+                        "explanation": "متغیر age را ایجاد می‌کنیم و عدد 25 را در آن ذخیره می‌کنیم (عدد صحیح/int)"
+                    },
+                    {
+                        "lineNum": 3,
+                        "code": "height = 1.75",
+                        "explanation": "متغیر height را ایجاد می‌کنیم و عدد 1.75 را ذخیره می‌کنیم (عدد اعشاری/float)"
+                    },
+                    {
+                        "lineNum": 4,
+                        "code": "is_student = True",
+                        "explanation": "متغیر is_student را ایجاد می‌کنیم و مقدار True (درست) را ذخیره می‌کنیم (منطقی/boolean)"
+                    },
+                    {
+                        "lineNum": 5,
+                        "code": "print(name)",
+                        "explanation": "تابع print آن را فراخوانی می‌کنیم و مقدار متغیر name را چاپ می‌کنیم"
+                    },
+                    {
+                        "lineNum": 6,
+                        "code": "print(age)",
+                        "explanation": "مقدار age را چاپ می‌کنیم که برابر 25 است"
+                    },
+                    {
+                        "lineNum": 7,
+                        "code": "print(type(name))",
+                        "explanation": "تابع type را استفاده می‌کنیم تا نوع داده متغیر name را ببینیم (باید str باشد)"
+                    },
+                    {
+                        "lineNum": 8,
+                        "code": "print(type(age))",
+                        "explanation": "نوع داده age را می‌بینیم (باید int باشد)"
+                    }
+                ],
+                "fullCode": `# تعریف متغیرها
+name = "علی"
+age = 25
+height = 1.75
+is_student = True
+
+# چاپ متغیرها
+print(name)
+print(age)
+print(height)
+print(is_student)
+
+# چاپ نوع داده‌ها
+print(type(name))
+print(type(age))
+print(type(height))
+print(type(is_student))`,
+                "output": `علی
+25
+1.75
+True
+<class 'str'>
+<class 'int'>
+<class 'float'>
+<class 'bool'>`
+            },
+            "2": {
+                "title": "مثال 2: لیست‌ها و حلقه‌ها",
+                "lineByLine": [
+                    {
+                        "lineNum": 1,
+                        "code": "numbers = [1, 2, 3, 4, 5]",
+                        "explanation": "یک لیست به نام numbers ایجاد می‌کنیم که شامل 5 عدد است (از 1 تا 5)"
+                    },
+                    {
+                        "lineNum": 2,
+                        "code": "print(numbers)",
+                        "explanation": "کل لیست را چاپ می‌کنیم"
+                    },
+                    {
+                        "lineNum": 3,
+                        "code": "print(numbers[0])",
+                        "explanation": "عنصر اول لیست را چاپ می‌کنیم (شاخص 0 یعنی اولی، نه 1)"
+                    },
+                    {
+                        "lineNum": 4,
+                        "code": "print(numbers[-1])",
+                        "explanation": "عنصر آخر لیست را چاپ می‌کنیم (شاخص -1 آخرین عنصر است)"
+                    },
+                    {
+                        "lineNum": 5,
+                        "code": "numbers.append(6)",
+                        "explanation": "با متد append عدد 6 را به انتهای لیست اضافه می‌کنیم"
+                    },
+                    {
+                        "lineNum": 6,
+                        "code": "print(numbers)",
+                        "explanation": "لیست تغییر‌یافته را چاپ می‌کنیم (حالا 6 عنصر دارد)"
+                    },
+                    {
+                        "lineNum": 7,
+                        "code": "for number in numbers:",
+                        "explanation": "یک حلقه for شروع می‌کنیم که روی هر عنصر لیست تکرار می‌شود"
+                    },
+                    {
+                        "lineNum": 8,
+                        "code": "    print(f\"عدد: {number}\")",
+                        "explanation": "داخل حلقه، هر عدد را با متن \"عدد: \" چاپ می‌کنیم (f-string استفاده می‌کنیم)"
+                    }
+                ],
+                "fullCode": `# ایجاد لیست
+numbers = [1, 2, 3, 4, 5]
+print(numbers)
+
+# دسترسی به عناصر
+print("عنصر اول:", numbers[0])
+print("عنصر آخر:", numbers[-1])
+
+# اضافه کردن عنصر
+numbers.append(6)
+print("بعد از اضافه کردن:", numbers)
+
+# حلقه روی لیست
+print("\nچاپ تک‌تک:")
+for number in numbers:
+    print(f"عدد: {number}")`,
+                "output": `[1, 2, 3, 4, 5]
+عنصر اول: 1
+عنصر آخر: 5
+بعد از اضافه کردن: [1, 2, 3, 4, 5, 6]
+
+چاپ تک‌تک:
+عدد: 1
+عدد: 2
+عدد: 3
+عدد: 4
+عدد: 5
+عدد: 6`
+            },
+            "3": {
+                "title": "مثال 3: توابع",
+                "lineByLine": [
+                    {
+                        "lineNum": 1,
+                        "code": "def add_numbers(a, b):",
+                        "explanation": "تابعی به نام add_numbers تعریف می‌کنیم که 2 پارامتر a و b دریافت می‌کند"
+                    },
+                    {
+                        "lineNum": 2,
+                        "code": "    result = a + b",
+                        "explanation": "داخل تابع، دو عدد را جمع می‌کنیم و در متغیر result ذخیره می‌کنیم"
+                    },
+                    {
+                        "lineNum": 3,
+                        "code": "    return result",
+                        "explanation": "نتیجه جمع را بازگشت می‌دهیم تا بتوان از آن استفاده کرد"
+                    },
+                    {
+                        "lineNum": 4,
+                        "code": "sum1 = add_numbers(10, 20)",
+                        "explanation": "تابع add_numbers را با اعداد 10 و 20 فراخوانی می‌کنیم و نتیجه را در sum1 ذخیره می‌کنیم"
+                    },
+                    {
+                        "lineNum": 5,
+                        "code": "print(f\"جمع 10 و 20: {sum1}\")",
+                        "explanation": "نتیجه را چاپ می‌کنیم (باید 30 باشد)"
+                    },
+                    {
+                        "lineNum": 6,
+                        "code": "def calculate_average(numbers):",
+                        "explanation": "تابع دیگری تعریف می‌کنیم که یک لیست از اعداد دریافت می‌کند"
+                    },
+                    {
+                        "lineNum": 7,
+                        "code": "    total = sum(numbers)",
+                        "explanation": "با تابع sum تمام اعداد لیست را جمع می‌کنیم"
+                    },
+                    {
+                        "lineNum": 8,
+                        "code": "    count = len(numbers)",
+                        "explanation": "با تابع len تعداد عناصر لیست را می‌شماریم"
+                    },
+                    {
+                        "lineNum": 9,
+                        "code": "    average = total / count",
+                        "explanation": "میانگین را با تقسیم جمع بر تعداد محاسبه می‌کنیم"
+                    },
+                    {
+                        "lineNum": 10,
+                        "code": "    return average",
+                        "explanation": "میانگین را بازگشت می‌دهیم"
+                    },
+                    {
+                        "lineNum": 11,
+                        "code": "scores = [85, 90, 78, 92]",
+                        "explanation": "یک لیست از نمرات ایجاد می‌کنیم"
+                    },
+                    {
+                        "lineNum": 12,
+                        "code": "avg = calculate_average(scores)",
+                        "explanation": "تابع calculate_average را با لیست نمرات فراخوانی می‌کنیم"
+                    },
+                    {
+                        "lineNum": 13,
+                        "code": "print(f\"میانگین نمرات: {avg}\")",
+                        "explanation": "میانگین محاسبه‌شده را چاپ می‌کنیم"
+                    }
+                ],
+                "fullCode": `# تابع برای جمع دو عدد
+def add_numbers(a, b):
+    result = a + b
+    return result
+
+sum1 = add_numbers(10, 20)
+print(f"جمع 10 و 20: {sum1}")
+
+# تابع برای محاسبه میانگین
+def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    average = total / count
+    return average
+
+scores = [85, 90, 78, 92]
+avg = calculate_average(scores)
+print(f"میانگین نمرات: {avg}")
+
+# استفاده دوباره از تابع
+prices = [100, 150, 200, 50]
+avg_price = calculate_average(prices)
+print(f"میانگین قیمت: {avg_price}")`,
+                "output": `جمع 10 و 20: 30
+میانگین نمرات: 86.25
+میانگین قیمت: 125.0`
+            },
+            "4": {
+                "title": "مثال 4: NumPy - آرایه‌ها",
+                "lineByLine": [
+                    {
+                        "lineNum": 1,
+                        "code": "import numpy as np",
+                        "explanation": "کتابخانه NumPy را import می‌کنیم و آن را np نام‌گذاری می‌کنیم"
+                    },
+                    {
+                        "lineNum": 2,
+                        "code": "arr = np.array([1, 2, 3, 4, 5])",
+                        "explanation": "یک NumPy آرایه ایجاد می‌کنیم (مثل لیست اما خیلی سریع‌تر)"
+                    },
+                    {
+                        "lineNum": 3,
+                        "code": "print(arr)",
+                        "explanation": "آرایه را چاپ می‌کنیم"
+                    },
+                    {
+                        "lineNum": 4,
+                        "code": "print(arr * 2)",
+                        "explanation": "تمام عناصر آرایه را در 2 ضرب می‌کنیم (خیلی ساده در NumPy!)"
+                    },
+                    {
+                        "lineNum": 5,
+                        "code": "print(arr + 10)",
+                        "explanation": "به تمام عناصر 10 اضافه می‌کنیم"
+                    },
+                    {
+                        "lineNum": 6,
+                        "code": "print(np.sum(arr))",
+                        "explanation": "مجموع تمام عناصر را محاسبه می‌کنیم (1+2+3+4+5=15)"
+                    },
+                    {
+                        "lineNum": 7,
+                        "code": "print(np.mean(arr))",
+                        "explanation": "میانگین عناصر را محاسبه می‌کنیم (15/5=3)"
+                    },
+                    {
+                        "lineNum": 8,
+                        "code": "print(np.max(arr))",
+                        "explanation": "بیشترین عدد را پیدا می‌کنیم (5)"
+                    },
+                    {
+                        "lineNum": 9,
+                        "code": "print(np.min(arr))",
+                        "explanation": "کمترین عدد را پیدا می‌کنیم (1)"
+                    },
+                    {
+                        "lineNum": 10,
+                        "code": "matrix = np.array([[1, 2, 3], [4, 5, 6]])",
+                        "explanation": "آرایه 2 بعدی (ماتریس) ایجاد می‌کنیم"
+                    },
+                    {
+                        "lineNum": 11,
+                        "code": "print(matrix.shape)",
+                        "explanation": "شکل ماتریس را می‌بینیم (2 ردیف، 3 ستون)"
+                    },
+                    {
+                        "lineNum": 12,
+                        "code": "print(matrix)",
+                        "explanation": "ماتریس را چاپ می‌کنیم"
+                    }
+                ],
+                "fullCode": `import numpy as np
+
+# آرایه یک‌بعدی
+arr = np.array([1, 2, 3, 4, 5])
+print("آرایه اصلی:")
+print(arr)
+
+# عملیات ریاضی
+print("\nضرب در 2:")
+print(arr * 2)
+
+print("\nجمع 10:")
+print(arr + 10)
+
+# توابع تجمیع‌کننده
+print("\nمجموع:", np.sum(arr))
+print("میانگین:", np.mean(arr))
+print("بیشترین:", np.max(arr))
+print("کمترین:", np.min(arr))
+
+# آرایه 2 بعدی
+matrix = np.array([[1, 2, 3], [4, 5, 6]])
+print("\nماتریس:")
+print(matrix)
+print("شکل ماتریس:", matrix.shape)`,
+                "output": `آرایه اصلی:
+[1 2 3 4 5]
+
+ضرب در 2:
+[ 2  4  6  8 10]
+
+جمع 10:
+[11 12 13 14 15]
+
+مجموع: 15
+میانگین: 3.0
+بیشترین: 5
+کمترین: 1
+
+ماتریس:
+[[1 2 3]
+ [4 5 6]]
+شکل ماتریس: (2, 3)`
+            },
+            "5": {
+                "title": "مثال 5: Pandas - DataFrame",
+                "lineByLine": [
+                    {
+                        "lineNum": 1,
+                        "code": "import pandas as pd",
+                        "explanation": "کتابخانه Pandas را import می‌کنیم"
+                    },
+                    {
+                        "lineNum": 2,
+                        "code": "data = {'نام': ['علی', 'فاطمه', 'محمد'], 'نمره': [85, 90, 78]}",
+                        "explanation": "یک دیکشنری ایجاد می‌کنیم که شامل نام‌ها و نمرات است"
+                    },
+                    {
+                        "lineNum": 3,
+                        "code": "df = pd.DataFrame(data)",
+                        "explanation": "DataFrame ایجاد می‌کنیم (مثل جدول در Excel)"
+                    },
+                    {
+                        "lineNum": 4,
+                        "code": "print(df)",
+                        "explanation": "جدول را چاپ می‌کنیم"
+                    },
+                    {
+                        "lineNum": 5,
+                        "code": "print(df['نام'])",
+                        "explanation": "فقط ستون 'نام' را نمایش می‌دهیم"
+                    },
+                    {
+                        "lineNum": 6,
+                        "code": "print(df['نمره'].mean())",
+                        "explanation": "میانگین نمرات را محاسبه می‌کنیم"
+                    },
+                    {
+                        "lineNum": 7,
+                        "code": "high_scores = df[df['نمره'] > 80]",
+                        "explanation": "فقط دانش‌آموزانی را انتخاب می‌کنیم که نمره بیشتر از 80 دارند"
+                    },
+                    {
+                        "lineNum": 8,
+                        "code": "print(high_scores)",
+                        "explanation": "دانش‌آموزان برتر را چاپ می‌کنیم"
+                    },
+                    {
+                        "lineNum": 9,
+                        "code": "df['درجه'] = df['نمره'].apply(lambda x: 'خوب' if x > 85 else 'متوسط')",
+                        "explanation": "ستون جدید 'درجه' اضافه می‌کنیم بر اساس نمره"
+                    },
+                    {
+                        "lineNum": 10,
+                        "code": "print(df)",
+                        "explanation": "جدول نهایی را چاپ می‌کنیم"
+                    }
+                ],
+                "fullCode": `import pandas as pd
+
+# ایجاد داده
+data = {
+    'نام': ['علی', 'فاطمه', 'محمد', 'زهرا'],
+    'نمره': [85, 90, 78, 92]
+}
+
+# ایجاد DataFrame
+df = pd.DataFrame(data)
+print("جدول اصلی:")
+print(df)
+
+# دسترسی به ستون
+print("\nنام‌های دانش‌آموزان:")
+print(df['نام'])
+
+# آمار
+print(f"\nمیانگین نمرات: {df['نمره'].mean()}")
+print(f"بیشترین نمره: {df['نمره'].max()}")
+
+# فیلتر کردن
+high_scores = df[df['نمره'] > 85]
+print("\nدانش‌آموزان با نمره بیشتر از 85:")
+print(high_scores)
+
+# اضافه کردن ستون
+df['درجه'] = df['نمره'].apply(lambda x: 'ممتاز' if x >= 90 else 'خوب' if x >= 85 else 'متوسط')
+print("\nجدول با درجات:")
+print(df)`,
+                "output": `جدول اصلی:
+  نام  نمره
+0  علی   85
+1 فاطمه   90
+2 محمد   78
+3 زهرا   92
+
+نام‌های دانش‌آموزان:
+0     علی
+1    فاطمه
+2    محمد
+3    زهرا
+Name: نام, dtype: object
+
+میانگین نمرات: 86.25
+بیشترین نمره: 92
+
+دانش‌آموزان با نمره بیشتر از 85:
+  نام  نمره
+1 فاطمه   90
+3 زهرا   92
+
+جدول با درجات:
+  نام  نمره   درجه
+0  علی   85   خوب
+1 فاطمه   90  ممتاز
+2 محمد   78  متوسط
+3 زهرا   92  ممتاز`
+            }
+        };
+
+        let currentExample = "1";
+
+        function renderLineByLine(exampleData) {
+            const container = document.getElementById('line-by-line');
+            let html = '';
+            
+            exampleData.lineByLine.forEach(line => {
+                html += `
+                    <div class="line-item">
+                        <div class="line-header">خط شماره ${line.lineNum}:</div>
+                        <div class="line-code">${escapeHtml(line.code)}</div>
+                        <div class="line-explanation"><strong>توضیح:</strong> ${line.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function renderFullCode(exampleData) {
+            const container = document.getElementById('full-code');
+            container.innerHTML = `
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-title">کد کامل Python</span>
+                        <button class="copy-btn" onclick="copyCode()">کپی کد</button>
+                    </div>
+                    <div class="code-block" id="code-block">${escapeHtml(exampleData.fullCode)}</div>
+                </div>
+            `;
+        }
+
+        function renderOutput(exampleData) {
+            const container = document.getElementById('output');
+            container.innerHTML = `
+                <div class="output-container">
+                    <div class="output-title">خروجی برنامه:</div>
+                    <div class="output-block">${escapeHtml(exampleData.output)}</div>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function loadExample(exampleId) {
+            const exampleData = examples[exampleId];
+            renderLineByLine(exampleData);
+            renderFullCode(exampleData);
+            renderOutput(exampleData);
+        }
+
+        function copyCode() {
+            const codeBlock = document.getElementById('code-block');
+            const text = codeBlock.textContent;
+            
+            // Create a temporary textarea to copy text
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopiedMessage();
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        function showCopiedMessage() {
+            const message = document.getElementById('copied-message');
+            message.classList.add('show');
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 2000);
+        }
+
+        function renderSidebar() {
+            const nav = document.getElementById('sidebar-nav');
+            let html = '';
+            
+            topicOrder.forEach((topicId, index) => {
+                const topic = topics[topicId];
+                const activeClass = index === currentTopicIndex ? 'active' : '';
+                html += `<div class="nav-item ${activeClass}" onclick="loadTopic(${index})">${topic.title}</div>`;
+            });
+            
+            nav.innerHTML = html;
+        }
+
+        function loadTopic(index) {
+            currentTopicIndex = index;
+            const topicId = topicOrder[index];
+            const topic = topics[topicId];
+            
+            // Update header
+            document.getElementById('topic-title').textContent = topic.title;
+            document.getElementById('topic-subtitle').textContent = topic.subtitle || '';
+            
+            // Update sidebar
+            renderSidebar();
+            
+            // Render content based on type
+            if (topic.type === 'info') {
+                renderInfoContent(topic);
+            } else if (topic.type === 'conclusion') {
+                renderConclusion(topic);
+            } else {
+                renderLineByLine(topic);
+                renderFullCode(topic);
+                renderOutput(topic);
+            }
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = index === 0;
+            document.getElementById('next-btn').disabled = index === topicOrder.length - 1;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function renderInfoContent(topic) {
+            document.getElementById('line-by-line').innerHTML = `<div class="info-content">${topic.content}</div>`;
+            document.getElementById('full-code').innerHTML = '';
+            document.getElementById('output').innerHTML = '';
+        }
+
+        function renderConclusion(topic) {
+            const pointsHtml = topic.points.map(point => `<li>✓ ${point}</li>`).join('');
+            const html = `
+                <div class="conclusion-container">
+                    <div class="conclusion-title">🎯 ${topic.title}</div>
+                    <ul class="conclusion-points">${pointsHtml}</ul>
+                </div>
+            `;
+            document.getElementById('line-by-line').innerHTML = html;
+            document.getElementById('full-code').innerHTML = '';
+            document.getElementById('output').innerHTML = '';
+        }
+
+        function navigateNext() {
+            if (currentTopicIndex < topicOrder.length - 1) {
+                loadTopic(currentTopicIndex + 1);
+            }
+        }
+
+        function navigatePrev() {
+            if (currentTopicIndex > 0) {
+                loadTopic(currentTopicIndex - 1);
+            }
+        }
+
+        // Event listeners
+
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Load first topic on page load
+        renderSidebar();
+        loadTopic(0);
+    // --- Search Logic ---
+const searchInput = document.getElementById('search-input');
+if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+        const value = this.value.trim();
+        if (!value) {
+            renderSidebar();
+            return;
+        }
+        const results = searchTopics(value);
+        renderSidebar(results);
+    });
+}
+
+function searchTopics(query) {
+    query = query.toLowerCase();
+    const matches = [];
+    topicOrder.forEach(topicId => {
+        const topic = topics[topicId];
+        // Search title, subtitle, code, and explanations
+        let found = false;
+        if ((topic.title && topic.title.toLowerCase().includes(query)) || (topic.subtitle && topic.subtitle.toLowerCase().includes(query))) {
+            found = true;
+        }
+        // Line by line for code and explanations
+        if (!found && Array.isArray(topic.lineByLine)) {
+            for (const line of topic.lineByLine) {
+                if (line.code && line.code.toLowerCase().includes(query)) found = true;
+                if (line.explanation && line.explanation.toLowerCase().includes(query)) found = true;
+            }
+        }
+        // Full code block
+        if (!found && topic.fullCode && topic.fullCode.toLowerCase().includes(query)) found = true;
+        // Output
+        if (!found && topic.output && topic.output.toLowerCase().includes(query)) found = true;
+        // For info/conclusion types
+        if (!found && topic.content && topic.content.toLowerCase().includes(query)) found = true;
+        if (found) {
+            matches.push(topicId);
+        }
+    });
+    return matches;
+}
+
+function renderSidebar(filteredList) {
+    const nav = document.getElementById('sidebar-nav');
+    let html = '';
+    const list = filteredList || topicOrder;
+    list.forEach((topicId, index) => {
+        const currentTopicIdx = filteredList ? topicOrder.indexOf(topicId) : index;
+        const topic = topics[topicId];
+        const activeClass = currentTopicIdx === currentTopicIndex ? 'active' : '';
+        html += `<div class="nav-item ${activeClass}" onclick="loadTopic(${currentTopicIdx})">${topic.title}</div>`;
+    });
+    if (html === '') {
+        html = '<div style="padding:16px;">هیچ موردی یافت نشد.</div>';
+    }
+    nav.innerHTML = html;
+}
+
+// --- End Search Logic ---
+</script>
+</body>
+</html>
